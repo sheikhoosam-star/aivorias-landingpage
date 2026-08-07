@@ -77,7 +77,7 @@
     border-bottom:1px solid var(--line);
   }
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
-  .logo-img{height:30px;display:block;filter:brightness(0) invert(1);}
+  .logo-text{height:30px;display:block;}
   .navlinks{display:flex;gap:34px;font-size:0.92rem;color:var(--paper-dim);}
   .navlinks a:hover{color:var(--paper);}
   .nav-cta{background:var(--mint);color:#06231A;padding:11px 24px;border-radius:100px;font-weight:700;font-size:0.88rem;}
@@ -201,7 +201,7 @@
 
   footer{border-top:1px solid var(--line);padding:50px 0 40px;color:var(--paper-faint);font-size:0.85rem;}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-  footer .logo-img{height:24px;opacity:0.85;}
+  footer .logo-text{height:24px;opacity:0.85;}
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1;transform:none;}
@@ -215,13 +215,13 @@
 <body>
 
 <div id="loader">
-  <img src="data:image/png;base64,LOGO_EYE_B64" alt="AIvorias">
+  <img src="logo.png" alt="AIvorias">
   <div class="loader-text">AIvorias · Loading</div>
 </div>
 
 <nav>
   <div class="wrap">
-    <img class="logo-img" src="data:image/png;base64,LOGO_TEXT_B64" alt="AIvorias">
+    <img class="logo-text" src="logo-text.png" alt="AIvorias">
     <div class="navlinks">
       <a href="#services">Services</a>
       <a href="#industries">Industries</a>
@@ -392,7 +392,7 @@
 
 <footer>
   <div class="wrap">
-    <img class="logo-img" src="data:image/png;base64,LOGO_TEXT_B64" alt="AIvorias">
+    <img class="logo-text" src="logo-text.png" alt="AIvorias">
     <div>© 2026 AIvorias. AI Automation for Pakistan & Beyond.</div>
   </div>
 </footer>
