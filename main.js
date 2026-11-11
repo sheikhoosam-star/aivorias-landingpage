@@ -4,18 +4,6 @@
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Loader: eye logo, first page of a visit only */
-  var loader = document.getElementById('loader');
-  if (loader) {
-    var hide = function () {
-      loader.classList.add('hide');
-      try { sessionStorage.setItem('aiv_seen', '1'); } catch (e) {}
-    };
-    if (document.readyState === 'complete') { setTimeout(hide, 900); }
-    else { window.addEventListener('load', function () { setTimeout(hide, 900); }); }
-    setTimeout(hide, 3500); // safety net
-  }
-
   /* Mobile menu */
   var btn = document.querySelector('.menu-btn');
   var nav = document.getElementById('site-nav');
@@ -87,27 +75,10 @@
       });
     };
 
-    var startDelay = (loader && !document.documentElement.classList.contains('no-loader')) ? 1500 : 300;
-    setTimeout(play, startDelay);
+    setTimeout(play, 300);
     if (replay) replay.addEventListener('click', play);
   }
 
-
-  /* Collapsible cards: open on desktop, collapsed on phones; deep links open their card */
-  var details = document.querySelectorAll('details[data-desk-open]');
-  var desk = window.matchMedia && window.matchMedia('(min-width: 981px)').matches;
-  if (desk) details.forEach(function (d) { d.open = true; });
-  var openHash = function () {
-    var id = location.hash.slice(1);
-    if (!id) return;
-    var el = document.getElementById(id);
-    if (el && el.tagName === 'DETAILS') {
-      el.open = true;
-      setTimeout(function () { el.scrollIntoView({ block: 'start' }); }, 60);
-    }
-  };
-  openHash();
-  window.addEventListener('hashchange', openHash);
 
   /* Contact form: opens the visitor's email app with the message ready to send */
   var form = document.getElementById('lead-form');
