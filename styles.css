@@ -10,7 +10,7 @@ a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding-inline:var(--gutter)}
 .skip{position:absolute;left:-999px;top:8px;background:var(--acc);color:#fff;padding:8px 14px;border-radius:8px;z-index:99}
 .skip:focus{left:8px}
-h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0;text-wrap:balance}
+h1,h2,h3{text-transform:capitalize;font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0;text-wrap:balance}
 h1{font-size:clamp(2.1rem,5.4vw,4.1rem)}
 h1 em{font-style:normal;color:var(--acc)}
 h2{font-size:clamp(1.8rem,3.8vw,3rem)}
