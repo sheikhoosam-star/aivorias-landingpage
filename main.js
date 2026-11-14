@@ -20,66 +20,6 @@
     window.addEventListener('resize', function () { if (window.innerWidth > 900) setOpen(false); });
   }
 
-  /* Live call demo (home page only) */
-  var call = document.getElementById('call');
-  if (call) {
-    var wave = call.querySelector('.wave');
-    var heights = [38, 62, 84, 48, 72, 30, 58, 92, 44, 68, 36, 80, 54, 26, 64, 88, 42, 70, 34, 76, 50, 60, 28, 66];
-    heights.forEach(function (h, i) {
-      var b = document.createElement('i');
-      b.style.setProperty('--h', h + '%');
-      b.style.animationDelay = (i * 0.07) + 's';
-      wave.appendChild(b);
-    });
-
-    var msgs = Array.prototype.slice.call(call.querySelectorAll('.msg'));
-    var chips = Array.prototype.slice.call(call.querySelectorAll('.chip'));
-    var timerEl = call.querySelector('.call-timer');
-    var replay = call.querySelector('.replay');
-    var timers = [];
-    var tick = null;
-
-    var later = function (fn, ms) { timers.push(setTimeout(fn, ms)); };
-    var fmt = function (s) { return '00:' + (s < 10 ? '0' : '') + s; };
-
-    var reset = function () {
-      timers.forEach(clearTimeout); timers = [];
-      if (tick) { clearInterval(tick); tick = null; }
-      msgs.forEach(function (m) { m.classList.remove('show'); });
-      chips.forEach(function (c) { c.classList.remove('show'); });
-      call.classList.remove('speaking');
-      timerEl.textContent = fmt(0);
-    };
-
-    var showAll = function () {
-      msgs.forEach(function (m) { m.classList.add('show'); });
-      chips.forEach(function (c) { c.classList.add('show'); });
-      timerEl.textContent = fmt(38);
-    };
-
-    var play = function () {
-      reset();
-      if (reduce) { showAll(); return; }
-      var secs = 0;
-      tick = setInterval(function () { secs += 1; timerEl.textContent = fmt(secs); if (secs >= 38) { clearInterval(tick); tick = null; } }, 1000);
-      var t = 500;
-      msgs.forEach(function (m) {
-        (function (el, at) {
-          later(function () { el.classList.add('show'); call.classList.add('speaking'); }, at);
-          later(function () { call.classList.remove('speaking'); }, at + 1900);
-        })(m, t);
-        t += 2600;
-      });
-      chips.forEach(function (c, i) {
-        later(function () { c.classList.add('show'); }, t + i * 450);
-      });
-    };
-
-    setTimeout(play, 300);
-    if (replay) replay.addEventListener('click', play);
-  }
-
-
   /* Contact form: opens the visitor's email app with the message ready to send */
   var form = document.getElementById('lead-form');
   if (form) {
